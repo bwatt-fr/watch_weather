@@ -1,0 +1,14 @@
+{
+   "email_from": "une@adresse.com",
+   "mail_to" : ["une@adresse.com"],
+   "subject" : "Object of the message",
+   "message": "The desired message. Must contain an #### (to replace by the temperature)",
+   "username": "My username",
+   "password": "My password",
+   "server_mail": "My Mail server",
+   "port_server_mail": 587,
+   "owm_api_key": "My open weather map API key",
+   "city": "My city",
+   "owm_url": "http://api.openweathermap.org/data/2.5/forecast",
+   "temp_min": "My minimal temperature (in Kelvin)"
+}

@@ -47,12 +47,13 @@ response = requests.get("{url}?q={city}&APPID={key}".format(
                             key=config["owm_api_key"]))
 weather_json = response.json()
 
-now = datetime.datetime.now()
 tomorow_data = [data for data in weather_json["list"]
                 if get_tomorow_date(data["dt_txt"])]
-for data in tomorow_data:
-    if float(data["main"]["temp_min"]) < float(config["temp_min"]):
-        for mail_to in config["mail_to"]:
-            mail = create_mail(config, mail_to, data["main"]["temp_min"])
-            send_mail(config, mail_to, mail)
-        break
+
+tomorow_data_min = min(tomorow_data, key=lambda d: d["main"]["temp_min"])
+temp_min = tomorow_data_min["main"]["temp_min"]
+
+if float(temp_min) < float(config["temp_min"]):
+    for mail_to in config["mail_to"]:
+        mail = create_mail(config, mail_to, data["main"]["temp_min"])
+        send_mail(config, mail_to, mail)
