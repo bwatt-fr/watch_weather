@@ -55,5 +55,5 @@ temp_min = tomorow_data_min["main"]["temp_min"]
 
 if float(temp_min) < float(config["temp_min"]):
     for mail_to in config["mail_to"]:
-        mail = create_mail(config, mail_to, data["main"]["temp_min"])
+        mail = create_mail(config, mail_to, temp_min)
         send_mail(config, mail_to, mail)
